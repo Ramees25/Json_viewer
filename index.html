@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JSON Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Formatter</p>
+          <h1>JSON Viewer</h1>
+        </div>
+        <div id="status" class="status status-idle" role="status">Ready</div>
+      </header>
+
+      <section class="toolbar" aria-label="JSON tools">
+        <label class="control">
+          <span>Indent</span>
+          <select id="indentSize" aria-label="Indent size">
+            <option value="2" selected>2 spaces</option>
+            <option value="4">4 spaces</option>
+            <option value="tab">Tab</option>
+          </select>
+        </label>
+        <button id="formatBtn" class="button button-primary" type="button" title="Format JSON">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h10M4 18h16"></path>
+          </svg>
+          Format
+        </button>
+        <button id="minifyBtn" class="button" type="button" title="Minify JSON">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M4 7h16M8 12h8M10 17h4"></path>
+          </svg>
+          Minify
+        </button>
+        <button id="copyBtn" class="button" type="button" title="Copy formatted JSON">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <rect x="8" y="8" width="11" height="11" rx="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy
+        </button>
+        <button id="sampleBtn" class="button" type="button" title="Load sample JSON">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <path d="M14 2v6h6M8 13h8M8 17h5"></path>
+          </svg>
+          Sample
+        </button>
+        <button id="clearBtn" class="button button-quiet" type="button" title="Clear editor">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M3 6h18M8 6V4h8v2M7 6l1 14h8l1-14"></path>
+          </svg>
+          Clear
+        </button>
+      </section>
+
+      <section class="workspace" aria-label="JSON editor and output">
+        <article class="pane">
+          <div class="pane-header">
+            <h2>Input</h2>
+            <span id="inputCount" class="count">0 chars</span>
+          </div>
+          <textarea id="jsonInput" spellcheck="false" placeholder='{"name":"Ada","active":true}' aria-label="Unformatted JSON input"></textarea>
+        </article>
+
+        <article class="pane">
+          <div class="pane-header">
+            <h2>Readable Output</h2>
+            <span id="outputCount" class="count">0 lines</span>
+          </div>
+          <pre id="jsonOutput" class="output" aria-label="Formatted JSON output"><span class="placeholder">Formatted JSON appears here.</span></pre>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
